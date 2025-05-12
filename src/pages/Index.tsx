@@ -1,18 +1,17 @@
-
-import React from 'react';
-import SHGHeader from '../components/SHGHeader';
-import FinancialSummary from '../components/FinancialSummary';
-import MenuGrid from '../components/MenuGrid';
-import Navigation from '../components/Navigation';
+import React from "react";
+import SHGHeader from "../components/SHGHeader";
+import FinancialSummary from "../components/FinancialSummary";
+import MenuGrid from "../components/MenuGrid";
+import Navigation from "../components/Navigation";
 
 const Index: React.FC = () => {
   // Financial summary data
   const financialData = {
-    totalAmount: '13,040.00',
-    shareAmount: '6,520.00',
-    currentBalance: '12,240.00',
-    totalLoanGiven: '800.00',
-    loanTakenByYou: '800.00',
+    totalAmount: "13,040.00",
+    shareAmount: "6,520.00",
+    currentBalance: "12,240.00",
+    totalLoanGiven: "800.00",
+    loanTakenByYou: "800.00",
   };
 
   // Menu items for personal reports
@@ -20,11 +19,6 @@ const Index: React.FC = () => {
     {
       title: "Month Wise Summary Report",
       route: "/month-summary",
-    },
-    {
-      title: "Govt. Schemes",
-      count: "28",
-      route: "/govt-schemes",
     },
     {
       title: "Your Loan",
@@ -60,7 +54,7 @@ const Index: React.FC = () => {
     {
       title: "Other Income",
       value: "6,520.00",
-      count: "1", 
+      count: "1",
       route: "/other-income",
     },
   ];
@@ -97,26 +91,6 @@ const Index: React.FC = () => {
       title: "Other Income Balance-Sheet",
       route: "/other-income-sheet",
     },
-    {
-      title: "My SHG Rules & Notice",
-      route: "/rules-notice",
-    },
-    {
-      title: "My SHG Detail Info",
-      route: "/detail-info",
-    },
-  ];
-
-  // Settings items
-  const settingsItems = [
-    {
-      title: "Profile Settings",
-      route: "/profile",
-    },
-    {
-      title: "Logout My Account",
-      route: "/logout",
-    },
   ];
 
   return (
@@ -124,7 +98,7 @@ const Index: React.FC = () => {
       {/* Header Section */}
       <SHGHeader
         groupName="Thiruvalluvar Women SHG"
-        shgCode="SHG2865C"
+        groupId="SHG2865C"
         president="Mrs. Sumathi D (President)"
         month="Jun"
         year="2024"
@@ -137,32 +111,34 @@ const Index: React.FC = () => {
 
         {/* Personal Reports Section */}
         <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Reports & Schemes</h2>
+          <h2 className="text-lg font-semibold text-shg-primary mb-2">
+            Reports
+          </h2>
           <MenuGrid items={personalReportItems} />
         </div>
 
         {/* Account Management Section */}
         <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Accounts</h2>
+          <h2 className="text-lg font-semibold text-shg-primary mb-2">
+            Accounts
+          </h2>
           <MenuGrid items={accountItems} />
         </div>
 
         {/* Loans and Sheets Section */}
         <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Loans & Balance Sheets</h2>
+          <h2 className="text-lg font-semibold text-shg-primary mb-2">
+            Loans & Balance Sheets
+          </h2>
           <MenuGrid items={loansAndSheetsItems} />
         </div>
 
         {/* Additional Information Section */}
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Information</h2>
-          <MenuGrid items={additionalItems} />
-        </div>
-
-        {/* Settings Section */}
         <div className="mt-6 mb-16">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Account Settings</h2>
-          <MenuGrid items={settingsItems} />
+          <h2 className="text-lg font-semibold text-shg-primary mb-2">
+            Information
+          </h2>
+          <MenuGrid items={additionalItems} />
         </div>
       </div>
 

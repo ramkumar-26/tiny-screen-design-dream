@@ -1,73 +1,186 @@
-# Welcome to your Lovable project
+# SHG Management System
 
-## Project info
+A comprehensive management system for Women Self Help Groups (SHGs) in India.
 
-**URL**: https://lovable.dev/projects/2162e663-41ff-4fe6-8a18-c176e4aef2fa
+## Features
 
-## How can I edit this code?
+- **User Management**
 
-There are several ways of editing your application.
+  - Role-based access control (Leader, Secretary, Member)
+  - User registration and authentication
+  - Profile management
 
-**Use Lovable**
+- **Group Management**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2162e663-41ff-4fe6-8a18-c176e4aef2fa) and start prompting.
+  - Group creation and configuration
+  - Member management
+  - Rules and notices
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Financial Management**
 
-**Use your preferred IDE**
+  - Savings tracking
+  - Loan management (request, approval, payment)
+  - Income and expense tracking
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Reporting**
+  - Monthly summaries
+  - Balance sheets
+  - Transaction history
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Tech Stack
 
-Follow these steps:
+### Frontend
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- React with TypeScript
+- React Router for navigation
+- Axios for API requests
+- Shadcn UI components
+- TailwindCSS for styling
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Backend
 
-# Step 3: Install the necessary dependencies.
-npm i
+- Node.js with Express
+- TypeScript
+- MongoDB with Mongoose
+- JWT for authentication
+- Role-based access control
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## Project Structure
+
+```
+├── backend/                 # Backend code
+│   ├── src/
+│   │   ├── config/          # Configuration files
+│   │   ├── controllers/     # API controllers
+│   │   ├── middlewares/     # Middleware functions
+│   │   ├── models/          # Database models
+│   │   ├── routes/          # API routes
+│   │   ├── utils/           # Utility functions
+│   │   └── index.ts         # Entry point
+│   ├── package.json
+│   └── tsconfig.json
+│
+└── src/                     # Frontend code
+    ├── components/          # React components
+    ├── context/             # Context providers
+    ├── hooks/               # Custom hooks
+    ├── pages/               # Page components
+    ├── services/            # API services
+    ├── utils/               # Utility functions
+    ├── App.tsx              # Main app component
+    └── main.tsx             # Entry point
 ```
 
-**Edit a file directly in GitHub**
+## Setup and Installation
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Prerequisites
 
-**Use GitHub Codespaces**
+- Node.js (v14 or higher)
+- MongoDB
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Backend Setup
 
-## What technologies are used for this project?
+1. Navigate to the backend directory:
 
-This project is built with:
+   ```
+   cd backend
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. Install dependencies:
 
-## How can I deploy this project?
+   ```
+   npm install
+   ```
 
-Simply open [Lovable](https://lovable.dev/projects/2162e663-41ff-4fe6-8a18-c176e4aef2fa) and click on Share -> Publish.
+3. Create a `.env` file based on `.env.example` and fill in the required values.
 
-## Can I connect a custom domain to my Lovable project?
+4. Start the development server:
+   ```
+   npm run dev
+   ```
 
-Yes, you can!
+### Frontend Setup
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Install dependencies from the root directory:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+   ```
+   npm install
+   ```
+
+2. Install additional dependencies:
+
+   ```
+   npm install axios @types/axios
+   ```
+
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+
+## User Roles and Permissions
+
+### Leader
+
+- Create and manage the group
+- Add/remove members
+- Approve/reject loan requests
+- Manage all financial transactions
+- View all reports
+
+### Secretary
+
+- Add members
+- Record savings and loan payments
+- Cannot remove members or approve loans
+
+### Member
+
+- View their own data
+- Request loans
+- View group summaries
+
+## API Endpoints
+
+### Authentication
+
+- `POST /api/auth/register-leader` - Register leader and create group
+- `POST /api/auth/register-member` - Register a new member
+- `POST /api/auth/login` - User login
+- `GET /api/auth/me` - Get current user
+
+### Group Management
+
+- `GET /api/groups` - Get group details
+- `PUT /api/groups` - Update group details
+- `GET /api/groups/members` - Get all group members
+- `GET /api/groups/rules-notices` - Get rules and notices
+- `PUT /api/groups/rules-notices` - Update rules and notices
+
+### Savings Management
+
+- `POST /api/savings` - Add savings entry
+- `GET /api/savings/me` - Get my savings
+- `GET /api/savings/user/:userId` - Get savings for a specific user
+- `GET /api/savings/month/:month/:year` - Get monthly savings
+- `PUT /api/savings/:id` - Update savings entry
+- `DELETE /api/savings/:id` - Delete savings entry
+
+### Loan Management
+
+- `POST /api/loans/request` - Request a loan
+- `PUT /api/loans/:id/status` - Update loan status
+- `GET /api/loans/me` - Get my loans
+- `POST /api/loans/:id/payment` - Record loan payment
+
+### Transaction Management
+
+- `POST /api/transactions` - Add transaction
+- `GET /api/transactions` - Get transactions
+- `GET /api/transactions/monthly/:month/:year` - Get monthly transactions
+- `PUT /api/transactions/:id` - Update transaction
+- `DELETE /api/transactions/:id` - Delete transaction
+
+## License
+
+MIT License
