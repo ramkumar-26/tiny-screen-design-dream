@@ -64,11 +64,11 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				shg: {
-					primary: '#11786B',
-					secondary: '#158C7E',
-					light: '#E7F5F3',
-					accent: '#125B52',
-					highlight: '#27AE60',
+					primary: '#5E35B1',
+					secondary: '#7E57C2',
+					light: '#EDE7F6',
+					accent: '#4527A0',
+					highlight: '#9575CD',
 				}
 			},
 			borderRadius: {
@@ -92,11 +92,22 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out'
 			}
 		}
 	},

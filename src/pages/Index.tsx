@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Calendar, Users, PiggyBank, BarChart3 } from 'lucide-react';
 import SHGHeader from '../components/SHGHeader';
 import FinancialSummary from '../components/FinancialSummary';
 import MenuGrid from '../components/MenuGrid';
@@ -18,23 +20,27 @@ const Index: React.FC = () => {
   // Menu items for personal reports
   const personalReportItems = [
     {
-      title: "Month Wise Summary Report",
+      title: "Month Summary",
+      icon: <Calendar size={20} className="text-shg-secondary" />,
       route: "/month-summary",
     },
     {
       title: "Govt. Schemes",
       count: "28",
+      icon: <Users size={20} className="text-shg-secondary" />,
       route: "/govt-schemes",
     },
     {
       title: "Your Loan",
       value: "800.00",
+      icon: <PiggyBank size={20} className="text-shg-secondary" />,
       route: "/your-loan",
     },
     {
-      title: "Loans In Month",
+      title: "Monthly Loans",
       value: "0.00",
       count: "0",
+      icon: <BarChart3 size={20} className="text-shg-secondary" />,
       route: "/loans-month",
     },
   ];
@@ -52,13 +58,13 @@ const Index: React.FC = () => {
       route: "/loans-remains",
     },
     {
-      title: "Other Expenses",
+      title: "Expenses",
       value: "0.00",
       count: "0",
       route: "/other-expenses",
     },
     {
-      title: "Other Income",
+      title: "Income",
       value: "6,520.00",
       count: "1", 
       route: "/other-income",
@@ -68,7 +74,7 @@ const Index: React.FC = () => {
   // Menu items for loans and sheets
   const loansAndSheetsItems = [
     {
-      title: "Ask Loan & Loan Risk-Ratio",
+      title: "Loan Risk-Ratio",
       route: "/loan-risk",
     },
     {
@@ -78,49 +84,37 @@ const Index: React.FC = () => {
       route: "/all-loans",
     },
     {
-      title: "My SHG Balance-Sheet",
+      title: "SHG Balance",
       route: "/my-shg-balance",
     },
     {
-      title: "Members Balance-Sheet",
+      title: "Member Balance",
       route: "/members-balance",
     },
   ];
 
-  // Menu items for additional information
-  const additionalItems = [
+  // Menu items for settings
+  const settingsItems = [
     {
-      title: "Other Expenses Balance-Sheet",
-      route: "/other-expenses-sheet",
+      title: "Profile",
+      route: "/profile-settings",
     },
     {
-      title: "Other Income Balance-Sheet",
-      route: "/other-income-sheet",
-    },
-    {
-      title: "My SHG Rules & Notice",
+      title: "Rules & Notices",
       route: "/rules-notice",
     },
     {
-      title: "My SHG Detail Info",
+      title: "Group Details",
       route: "/detail-info",
     },
-  ];
-
-  // Settings items
-  const settingsItems = [
     {
-      title: "Profile Settings",
-      route: "/profile",
-    },
-    {
-      title: "Logout My Account",
+      title: "Logout",
       route: "/logout",
-    },
+    }
   ];
 
   return (
-    <div className="max-w-md mx-auto bg-gray-100 min-h-screen pb-20">
+    <div className="max-w-md mx-auto bg-background min-h-screen pb-20">
       {/* Header Section */}
       <SHGHeader
         groupName="Thiruvalluvar Women SHG"
@@ -132,36 +126,83 @@ const Index: React.FC = () => {
 
       {/* Main Content */}
       <div className="px-4 py-3">
+        {/* Quick Action Cards */}
+        <div className="flex gap-3 mb-6 overflow-x-auto pb-2 -mx-4 px-4 snap-x">
+          <Link 
+            to="/monthly-savings" 
+            className="flex-shrink-0 w-40 bg-gradient-to-br from-green-500 to-teal-600 p-4 rounded-xl text-white font-medium flex flex-col justify-between h-32 snap-start shg-card-hover"
+          >
+            <PiggyBank size={24} />
+            <div>
+              <span className="block text-xs text-white/80">Monthly</span>
+              <span className="text-lg">Add Savings</span>
+            </div>
+          </Link>
+          
+          <Link
+            to="/provide-loan" 
+            className="flex-shrink-0 w-40 bg-gradient-to-br from-blue-500 to-indigo-600 p-4 rounded-xl text-white font-medium flex flex-col justify-between h-32 snap-start shg-card-hover"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h6a4 4 0 0 1 4 4v4H5v-8Z"/><path d="M9 12V6.5a2.5 2.5 0 0 1 5 0V12"/><path d="M13 21h2a4 4 0 0 0 4-4v-3a3 3 0 0 0-3-3h-2"/></svg>
+            <div>
+              <span className="block text-xs text-white/80">Manage</span>
+              <span className="text-lg">Loans</span>
+            </div>
+          </Link>
+          
+          <Link
+            to="/enter-info" 
+            className="flex-shrink-0 w-40 bg-gradient-to-br from-amber-500 to-orange-600 p-4 rounded-xl text-white font-medium flex flex-col justify-between h-32 snap-start shg-card-hover"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+            <div>
+              <span className="block text-xs text-white/80">Record</span>
+              <span className="text-lg">Transactions</span>
+            </div>
+          </Link>
+        </div>
+      
         {/* Financial Summary */}
         <FinancialSummary {...financialData} />
 
         {/* Personal Reports Section */}
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Reports & Schemes</h2>
+        <div className="mt-7">
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="text-lg font-semibold text-shg-primary">Reports & Schemes</h2>
+            <Link to="/reports" className="flex items-center text-sm text-shg-secondary">
+              View All <ArrowRight size={16} className="ml-1" />
+            </Link>
+          </div>
           <MenuGrid items={personalReportItems} />
         </div>
 
         {/* Account Management Section */}
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Accounts</h2>
+        <div className="mt-7">
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="text-lg font-semibold text-shg-primary">Accounts</h2>
+            <Link to="/accounts" className="flex items-center text-sm text-shg-secondary">
+              View All <ArrowRight size={16} className="ml-1" />
+            </Link>
+          </div>
           <MenuGrid items={accountItems} />
         </div>
 
         {/* Loans and Sheets Section */}
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Loans & Balance Sheets</h2>
+        <div className="mt-7">
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="text-lg font-semibold text-shg-primary">Loans & Balance Sheets</h2>
+            <Link to="/loans-sheets" className="flex items-center text-sm text-shg-secondary">
+              View All <ArrowRight size={16} className="ml-1" />
+            </Link>
+          </div>
           <MenuGrid items={loansAndSheetsItems} />
         </div>
 
-        {/* Additional Information Section */}
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Information</h2>
-          <MenuGrid items={additionalItems} />
-        </div>
-
         {/* Settings Section */}
-        <div className="mt-6 mb-16">
-          <h2 className="text-lg font-semibold text-shg-primary mb-2">Account Settings</h2>
+        <div className="mt-7 mb-16">
+          <div className="flex justify-between items-center mb-3">
+            <h2 className="text-lg font-semibold text-shg-primary">Settings</h2>
+          </div>
           <MenuGrid items={settingsItems} />
         </div>
       </div>

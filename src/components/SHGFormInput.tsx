@@ -29,17 +29,17 @@ const SHGFormInput: React.FC<SHGFormInputProps> = ({
 }) => {
   return (
     <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-700 mb-1">
+      <label className="block text-sm font-medium text-gray-700 mb-1.5">
         {label}{required && <span className="text-red-500 ml-1">*</span>}
       </label>
-      <div className="flex items-center rounded-md border border-gray-300 bg-white overflow-hidden">
+      <div className="flex items-center rounded-xl overflow-hidden border border-gray-300 bg-white focus-within:ring-2 focus-within:ring-shg-primary/30 focus-within:border-transparent transition-all">
         {prefix && (
-          <span className="px-3 text-gray-500 bg-gray-50 border-r border-gray-300">{prefix}</span>
+          <span className="px-3 text-gray-500 bg-gray-50 border-r border-gray-300 h-full flex items-center">{prefix}</span>
         )}
         
         {inputType === "select" ? (
           <select 
-            className="w-full p-2.5 focus:outline-none focus:ring-2 focus:ring-shg-primary/30"
+            className="w-full py-3 px-4 focus:outline-none bg-white"
             value={value}
             onChange={onChange as any}
             required={required}
@@ -56,12 +56,12 @@ const SHGFormInput: React.FC<SHGFormInputProps> = ({
             placeholder={placeholder}
             required={required}
             readOnly={readOnly}
-            className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 py-3 px-4"
           />
         )}
         
         {suffix && (
-          <span className="px-3 text-gray-500 bg-gray-50 border-l border-gray-300">{suffix}</span>
+          <span className="px-3 text-gray-500 bg-gray-50 border-l border-gray-300 h-full flex items-center">{suffix}</span>
         )}
       </div>
     </div>

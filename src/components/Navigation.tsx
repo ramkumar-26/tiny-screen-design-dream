@@ -1,16 +1,16 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Info, Phone, Share } from 'lucide-react';
+import { Home, Users, Inbox, Menu } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-shg-primary text-white shadow-lg z-10">
+    <nav className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-shg-primary to-shg-secondary text-white shadow-lg z-10">
       <div className="flex justify-between">
         <NavLink 
           to="/" 
           className={({ isActive }) => 
-            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent' : ''}`
+            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent' : 'hover:bg-white/10'}`
           }
         >
           <Home size={20} />
@@ -18,33 +18,33 @@ const Navigation: React.FC = () => {
         </NavLink>
         
         <NavLink 
-          to="/about" 
+          to="/group-info" 
           className={({ isActive }) => 
-            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent' : ''}`
+            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent' : 'hover:bg-white/10'}`
           }
         >
-          <Info size={20} />
-          <span className="text-xs mt-1">About Us</span>
+          <Users size={20} />
+          <span className="text-xs mt-1">Group</span>
         </NavLink>
         
         <NavLink 
-          to="/contact" 
+          to="/monthly-savings" 
           className={({ isActive }) => 
-            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent' : ''}`
+            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent' : 'hover:bg-white/10'}`
           }
         >
-          <Phone size={20} />
-          <span className="text-xs mt-1">Contact Us</span>
+          <Inbox size={20} />
+          <span className="text-xs mt-1">Savings</span>
         </NavLink>
         
         <NavLink 
-          to="/share" 
+          to="/info" 
           className={({ isActive }) => 
-            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent text-yellow-300 font-medium' : ''}`
+            `flex flex-1 flex-col items-center py-3 ${isActive ? 'bg-shg-accent text-yellow-100 font-medium' : 'hover:bg-white/10'}`
           }
         >
-          <Share size={20} />
-          <span className="text-xs mt-1">SHARE</span>
+          <Menu size={20} />
+          <span className="text-xs mt-1">More</span>
         </NavLink>
       </div>
     </nav>

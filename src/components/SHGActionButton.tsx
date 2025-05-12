@@ -22,12 +22,12 @@ const SHGActionButton: React.FC<SHGActionButtonProps> = ({
   const getButtonClasses = () => {
     switch (color) {
       case 'green':
-        return 'bg-green-600 hover:bg-green-700 text-white';
+        return 'bg-gradient-to-r from-emerald-500 to-green-600 hover:opacity-90 text-white';
       case 'red':
-        return 'bg-red-600 hover:bg-red-700 text-white';
+        return 'bg-gradient-to-r from-red-500 to-rose-600 hover:opacity-90 text-white';
       case 'primary':
       default:
-        return 'bg-gradient-to-r from-shg-primary to-shg-secondary hover:from-shg-secondary hover:to-shg-primary text-white';
+        return 'bg-gradient-to-r from-shg-primary to-shg-secondary hover:opacity-90 text-white';
     }
   };
   
@@ -35,7 +35,7 @@ const SHGActionButton: React.FC<SHGActionButtonProps> = ({
     <Button
       type={type}
       onClick={onClick}
-      className={`${getButtonClasses()} text-base py-6 shadow-md transition-all duration-300 ${fullWidth ? 'w-full' : ''}`}
+      className={`${getButtonClasses()} text-base py-6 rounded-xl shadow-md transition-all duration-300 ${fullWidth ? 'w-full' : ''}`}
     >
       {icon && <span className="mr-2">{icon}</span>}
       {children}

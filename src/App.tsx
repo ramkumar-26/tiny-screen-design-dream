@@ -5,9 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Share from "./pages/Share";
+import InfoPage from "./pages/InfoPage";
 import EnterInfo from "./pages/EnterInfo";
 import NotFound from "./pages/NotFound";
 import GroupInfo from "./pages/GroupInfo";
@@ -32,9 +30,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/share" element={<Share />} />
+          <Route path="/info" element={<InfoPage />} />
           <Route path="/enter-info" element={<EnterInfo />} />
           
           {/* SHG Management Pages */}
