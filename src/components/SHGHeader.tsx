@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface SHGHeaderProps {
   groupName: string;
@@ -16,6 +17,8 @@ const SHGHeader: React.FC<SHGHeaderProps> = ({
   month, 
   year 
 }) => {
+  const navigate = useNavigate();
+  
   return (
     <div className="shg-header text-center">
       <div className="bg-shg-accent text-white px-3 py-2 rounded-md mb-3 text-sm">
@@ -30,7 +33,9 @@ const SHGHeader: React.FC<SHGHeaderProps> = ({
         <button className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-md text-sm font-medium flex-1 mr-2">
           View INFO
         </button>
-        <button className="bg-white text-shg-primary px-4 py-2 rounded-md text-sm font-medium flex-1 ml-2">
+        <button 
+          onClick={() => navigate('/enter-info')}
+          className="bg-white text-shg-primary px-4 py-2 rounded-md text-sm font-medium flex-1 ml-2">
           Enter INFO
         </button>
       </div>
