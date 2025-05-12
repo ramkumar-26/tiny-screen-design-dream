@@ -7,7 +7,7 @@ import SHGTable from '../components/SHGTable';
 import SHGActionButton from '../components/SHGActionButton';
 import { WhatsappIcon } from '../components/WhatsappIcon';
 import { useToast } from '@/components/ui/use-toast';
-import { Textarea } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const AddIncome: React.FC = () => {
   const { toast } = useToast();

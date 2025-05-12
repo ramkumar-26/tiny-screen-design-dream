@@ -12,16 +12,22 @@ const SHGPageHeader: React.FC<SHGPageHeaderProps> = ({ title, date }) => {
   const navigate = useNavigate();
   
   return (
-    <div className="bg-shg-primary text-white p-4 flex items-center">
-      <button 
-        onClick={() => navigate(-1)}
-        className="mr-2 p-1 rounded-full hover:bg-white/20"
-        aria-label="Go back"
-      >
-        <ArrowLeft size={20} />
-      </button>
-      <h1 className="text-lg font-semibold flex-1 text-center mr-8">{title}</h1>
-      {date && <span className="text-sm font-medium text-green-300">{date}</span>}
+    <div className="bg-gradient-to-r from-shg-primary to-shg-secondary text-white p-4 shadow-md relative">
+      <div className="flex items-center">
+        <button 
+          onClick={() => navigate(-1)}
+          className="absolute left-2 p-2 rounded-full hover:bg-white/20 transition-colors"
+          aria-label="Go back"
+        >
+          <ArrowLeft size={20} />
+        </button>
+        <h1 className="text-lg font-bold w-full text-center">{title}</h1>
+        {date && (
+          <span className="absolute right-4 text-sm bg-green-400 text-shg-primary px-2 py-0.5 rounded-full font-medium">
+            {date}
+          </span>
+        )}
+      </div>
     </div>
   );
 };

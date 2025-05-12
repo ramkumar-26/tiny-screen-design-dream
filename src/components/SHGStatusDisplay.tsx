@@ -18,17 +18,18 @@ const SHGStatusDisplay: React.FC<SHGStatusDisplayProps> = ({
 }) => {
   return (
     <div className="text-center py-2">
-      <p className={`text-base mb-1 ${color}`}>
-        {label}: {value} 
+      <div className={`flex items-center justify-center ${color}`}>
+        <span className="font-medium mr-1">{label}:</span>
+        <span className="font-bold">{value}</span>
         {editLabel && (
           <button 
             onClick={onEdit}
-            className="ml-2 text-yellow-300 hover:text-yellow-100 font-medium text-sm"
+            className="ml-2 bg-yellow-400 text-shg-primary hover:bg-yellow-300 px-2 py-0.5 rounded-full text-xs font-medium transition-colors"
           >
-            ({editLabel})
+            {editLabel}
           </button>
         )}
-      </p>
+      </div>
     </div>
   );
 };

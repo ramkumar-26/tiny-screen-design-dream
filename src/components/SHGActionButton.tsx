@@ -8,6 +8,7 @@ interface SHGActionButtonProps {
   color?: 'primary' | 'green' | 'red';
   fullWidth?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  icon?: React.ReactNode;
 }
 
 const SHGActionButton: React.FC<SHGActionButtonProps> = ({ 
@@ -15,7 +16,8 @@ const SHGActionButton: React.FC<SHGActionButtonProps> = ({
   onClick, 
   color = 'primary',
   fullWidth = true,
-  type = 'button'
+  type = 'button',
+  icon
 }) => {
   const getButtonClasses = () => {
     switch (color) {
@@ -25,7 +27,7 @@ const SHGActionButton: React.FC<SHGActionButtonProps> = ({
         return 'bg-red-600 hover:bg-red-700 text-white';
       case 'primary':
       default:
-        return 'bg-shg-primary hover:bg-shg-accent text-white';
+        return 'bg-gradient-to-r from-shg-primary to-shg-secondary hover:from-shg-secondary hover:to-shg-primary text-white';
     }
   };
   
@@ -33,8 +35,9 @@ const SHGActionButton: React.FC<SHGActionButtonProps> = ({
     <Button
       type={type}
       onClick={onClick}
-      className={`${getButtonClasses()} text-base py-6 ${fullWidth ? 'w-full' : ''}`}
+      className={`${getButtonClasses()} text-base py-6 shadow-md transition-all duration-300 ${fullWidth ? 'w-full' : ''}`}
     >
+      {icon && <span className="mr-2">{icon}</span>}
       {children}
     </Button>
   );

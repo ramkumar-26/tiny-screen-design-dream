@@ -28,44 +28,43 @@ const SHGFormInput: React.FC<SHGFormInputProps> = ({
   options = []
 }) => {
   return (
-    <tr className="border border-gray-300">
-      <td className="p-3 bg-gray-100 font-medium border-r border-gray-300 w-1/3">
-        {label}:
-      </td>
-      <td className="p-2">
-        <div className="flex items-center">
-          {prefix && (
-            <span className="px-2">{prefix}</span>
-          )}
-          
-          {inputType === "select" ? (
-            <select 
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-              value={value}
-              onChange={onChange as any}
-              required={required}
-            >
-              {options.map(option => (
-                <option key={option.value} value={option.value}>{option.label}</option>
-              ))}
-            </select>
-          ) : (
-            <Input
-              type={inputType}
-              value={value}
-              onChange={onChange}
-              placeholder={placeholder}
-              required={required}
-              readOnly={readOnly}
-            />
-          )}
-          
-          {suffix && (
-            <span className="px-2">{suffix}</span>
-          )}
-        </div>
-      </td>
-    </tr>
+    <div className="mb-4">
+      <label className="block text-sm font-medium text-gray-700 mb-1">
+        {label}{required && <span className="text-red-500 ml-1">*</span>}
+      </label>
+      <div className="flex items-center rounded-md border border-gray-300 bg-white overflow-hidden">
+        {prefix && (
+          <span className="px-3 text-gray-500 bg-gray-50 border-r border-gray-300">{prefix}</span>
+        )}
+        
+        {inputType === "select" ? (
+          <select 
+            className="w-full p-2.5 focus:outline-none focus:ring-2 focus:ring-shg-primary/30"
+            value={value}
+            onChange={onChange as any}
+            required={required}
+          >
+            {options.map(option => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
+          </select>
+        ) : (
+          <Input
+            type={inputType}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            required={required}
+            readOnly={readOnly}
+            className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+          />
+        )}
+        
+        {suffix && (
+          <span className="px-3 text-gray-500 bg-gray-50 border-l border-gray-300">{suffix}</span>
+        )}
+      </div>
+    </div>
   );
 };
 
